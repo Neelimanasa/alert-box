@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Greeting Based on Time</title>
+    <style>
+        /* Background styling */
+        body {
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            background-image: linear-gradient(to right, #ffecd2, #fcb69f); /* Gradient background */
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        /* Heading styling */
+        h1 {
+            color: #fff;
+            font-size: 48px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Add text shadow */
+            margin-bottom: 20px;
+        }
+
+        /* Greeting message styling */
+        p {
+            font-size: 24px;
+            color: #333;
+            background-color: rgba(255, 255, 255, 0.8); /* White background with slight opacity */
+            padding: 15px 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+        }
+
+        /* Button for reloading the alert */
+        button {
+            margin-top: 20px;
+            padding: 12px 24px;
+            font-size: 18px;
+            background-color: #ff7e5f;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #feb47b;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Display the greeting message on the page -->
+    <h1>Welcome to My Project!</h1>
+    <p id="greetingMessage"></p>
+
+    <!-- Button to reload the alert -->
+    <button onclick="showGreeting()">Show Greeting Again</button>
+
+    <script>
+        // Function to determine the greeting based on the current time
+        function getGreeting() {
+            const date = new Date();
+            const hours = date.getHours(); // Get current hour (0 - 23)
+
+            if (hours < 12) {
+                return "Good Morning!";
+            } else if (hours < 18) {
+                return "Good Afternoon!";
+            } else {
+                return "Good Evening!";
+            }
+        }
+
+        // Function to display greeting in an alert and on the webpage
+        function showGreeting() {
+            const greetingMessage = getGreeting();
+            alert(greetingMessage); // Show the greeting in an alert box
+            document.getElementById("greetingMessage").innerText = greetingMessage; // Display on the page
+        }
+
+        // Automatically display the greeting when the page loads
+        window.onload = showGreeting;
+    </script>
+
+</body>
+</html>
